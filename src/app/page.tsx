@@ -1,7 +1,9 @@
+import { TestCalendar } from '@/calendar/components/TestCalendar'
+
 export default function Home() {
   return (
     <div className=''>
-      <main className=''></main>
+      <TestCalendar />
     </div>
   )
 }
