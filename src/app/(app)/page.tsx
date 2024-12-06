@@ -1,4 +1,4 @@
-import { TestCalendar } from '@/calendar/components/TestCalendar'
+import { TestCalendar } from "@/modules/calendar";
 
 export default function Home() {
   return (
