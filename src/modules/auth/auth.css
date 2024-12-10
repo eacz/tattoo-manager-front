@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.auth-wrapper {
+  @apply mt-4 flex flex-col h-full justify-around;
+}
+
+.bottom-text-container {
+  @apply flex items-center justify-center flex-col;
+}

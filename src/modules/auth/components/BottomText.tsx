@@ -5,7 +5,7 @@ interface Props {
 }
 export const BottomText = ({ linkText, text }: Props) => {
   return (
-    <div className='flex items-center justify-center flex-col'>
+    <div className='bottom-text-container'>
       <p className='text-lg'>{text}</p>
       <Link className='text-primary' href='/auth/signup'>
       {linkText}

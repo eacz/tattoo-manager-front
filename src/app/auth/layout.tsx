@@ -6,8 +6,8 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
 
   if (session?.user) redirect('/')
   return (
-    <main className='flex justify-center items-center bg-gray-300 h-screen'>
-      <div className='md:max-w-[1024px] bg-white w-full h-full max-h-[800px] rounded p-4 flex justify-center '>{children}</div>
+    <main className='flex justify-center items-center bg-background h-screen'>
+      <div className='md:max-w-[1024px] bg-foreground w-full h-full max-h-[800px] rounded p-4 flex justify-center '>{children}</div>
     </main>
   )
 }
