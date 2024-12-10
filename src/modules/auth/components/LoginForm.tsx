@@ -11,11 +11,7 @@ interface FormInputs {
 }
 
 export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInputs>({})
+  const { register, handleSubmit } = useForm<FormInputs>({})
   const [error, setError] = useState('')
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
@@ -32,12 +28,20 @@ export const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-14 items-center '>
       <div className='w-full'>
-        <label className='label' htmlFor='email'>Email</label>
-        <input type='email' className='input' {...register('email', { required: true, minLength: 8 })} />
+        <label className='label' htmlFor='email'>
+          Email
+        </label>
+        <input
+          id='email'
+          type='email'
+          className='input'
+          {...register('email', { required: true, minLength: 8 })}
+        />
       </div>
       <div className='w-full'>
-        <label className='label'>Password</label>
+        <label className='label'  htmlFor='password'>Password</label>
         <input
+          id='password'
           type='password'
           className='input'
           {...register('password', { required: true, minLength: 6 })}
@@ -47,7 +51,7 @@ export const LoginForm = () => {
         <p className='text-danger mb-2'>{error}</p>
 
         <button type='submit' className='button-primary'>
-          Login
+          Log in
         </button>
       </div>
     </form>

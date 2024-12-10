@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .auth-wrapper {
-  @apply mt-4 flex flex-col h-full justify-around;
+  @apply mt-4 flex flex-col h-full justify-around max-w-[350px];
 }
 
 .bottom-text-container {

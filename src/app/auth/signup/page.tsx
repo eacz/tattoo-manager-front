@@ -1,7 +1,10 @@
+import { AuthWrapper, RegisterForm, BottomText } from '@/modules/auth'
+
 export default function SignUp() {
   return (
-    <div className=''>
-      <p>Signup</p>
-    </div>
+    <AuthWrapper>
+      <RegisterForm />
+      <BottomText text='Already have an account?' linkText='Log in' link='/auth/login' />
+    </AuthWrapper>
   )
 }

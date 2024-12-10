@@ -1,4 +1,5 @@
 export * from './components/AuthWrapper'
 export * from './components/LoginForm'
-export * from './components/BottomText'
+export * from './components/RegisterForm'
 
+export * from './components/BottomText'

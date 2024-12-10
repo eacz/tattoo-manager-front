@@ -4,7 +4,7 @@ export default function Login() {
   return (
     <AuthWrapper>
       <LoginForm />
-      <BottomText text='Already have an account?' linkText='Sign up' />
+      <BottomText text="You don't have an account?" linkText='Sign up' link={'/auth/signup'}/>
     </AuthWrapper>
   )
 }
