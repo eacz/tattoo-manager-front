@@ -1,8 +1,10 @@
+import { cookies } from 'next/headers'
 import axios from 'axios'
 
 export const tattooManagerApi = axios.create({
   baseURL: process.env.BACKEND_URL,
-  headers: { 'Cache-Control': 'no-cache' },
+  headers: { 'Cache-Control': 'no-cache', Cookie: cookies().toString() },
+  withCredentials: true,
 })
 
 //TODO: this doesn't work, investigate how to fix it

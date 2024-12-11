@@ -1,8 +1,10 @@
 'use client'
 
-import { login } from '@/actions'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useTranslations } from 'next-intl'
+
+import { login } from '@/actions'
 import '../../common/common.css'
 
 interface FormInputs {
@@ -13,6 +15,7 @@ interface FormInputs {
 export const LoginForm = () => {
   const { register, handleSubmit } = useForm<FormInputs>({})
   const [error, setError] = useState('')
+  const t = useTranslations('loginPage');
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     const { email, password } = data
@@ -51,7 +54,7 @@ export const LoginForm = () => {
         <p className='text-danger mb-2'>{error}</p>
 
         <button type='submit' className='button-primary'>
-          Log in
+          {t('button')}
         </button>
       </div>
     </form>
