@@ -1,6 +1,23 @@
 {
   "loginPage": {
-    "button": "Log in"
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "button": "Log in"
+    },
+    "bottomText": "You don't have an account?",
+    "bottomTextLink": "Sign up"
+  },
+  "signupPage": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "button": "Sign up"
+    },
+    "bottomText": "Already have an account?",
+    "bottomTextLink": "Log in"
   },
   "test": "Hello"
 }

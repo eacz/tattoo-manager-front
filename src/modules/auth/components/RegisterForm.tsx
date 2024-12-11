@@ -4,6 +4,7 @@ import { login, signup } from '@/actions'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import '../../common/common.css'
+import { useTranslations } from 'next-intl'
 
 interface FormInputs {
   name: string
@@ -15,6 +16,7 @@ interface FormInputs {
 export const RegisterForm = () => {
   const { register, handleSubmit } = useForm<FormInputs>({})
   const [error, setError] = useState('')
+  const t = useTranslations('signupPage.form')
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setError('')
@@ -38,7 +40,7 @@ export const RegisterForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-14  items-center '>
       <div className='w-full'>
         <label className='label' htmlFor='name'>
-          Name
+          {t('name')}
         </label>
         <input
           id='name'
@@ -49,7 +51,7 @@ export const RegisterForm = () => {
       </div>
       <div className='w-full'>
         <label className='label' htmlFor='email'>
-          Email
+          {t('email')}
         </label>
         <input
           id='email'
@@ -60,7 +62,7 @@ export const RegisterForm = () => {
       </div>
       <div className='w-full'>
         <label className='label' htmlFor='password'>
-          Password
+          {t('password')}
         </label>
         <input
           id='password'
@@ -71,7 +73,7 @@ export const RegisterForm = () => {
       </div>
       <div className='w-full'>
         <label className='label' htmlFor='confirmPassword'>
-          Confirm password
+          {t('confirmPassword')}
         </label>
         <input
           id='confirmPassword'
@@ -84,7 +86,7 @@ export const RegisterForm = () => {
         <p className='text-danger mb-2'>{error}</p>
 
         <button type='submit' className='button-primary'>
-          Sign up
+          {t('button')}
         </button>
       </div>
     </form>

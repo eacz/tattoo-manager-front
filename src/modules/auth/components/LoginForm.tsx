@@ -15,7 +15,7 @@ interface FormInputs {
 export const LoginForm = () => {
   const { register, handleSubmit } = useForm<FormInputs>({})
   const [error, setError] = useState('')
-  const t = useTranslations('loginPage');
+  const t = useTranslations('loginPage.form')
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     const { email, password } = data
@@ -32,7 +32,7 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-14 items-center '>
       <div className='w-full'>
         <label className='label' htmlFor='email'>
-          Email
+          {t('email')}
         </label>
         <input
           id='email'
@@ -42,7 +42,9 @@ export const LoginForm = () => {
         />
       </div>
       <div className='w-full'>
-        <label className='label'  htmlFor='password'>Password</label>
+        <label className='label' htmlFor='password'>
+          {t('password')}
+        </label>
         <input
           id='password'
           type='password'

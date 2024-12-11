@@ -1,6 +1,23 @@
 {
   "loginPage": {
-    "button": "Ingresar"
+    "form": {
+      "email": "Email",
+      "password": "Contraseña",
+      "button": "Ingresar"
+    },
+    "bottomText": "¿No tenés una cuenta?",
+    "bottomTextLink": "Registrarse"
   },
-  "test": "Hola"
+  "signupPage": {
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "button": "Registrarse"
+    },
+    "bottomText": "¿Ya tenés una cuenta?",
+    "bottomTextLink": "Ingresar"
+  },
+  "test": "Hello"
 }

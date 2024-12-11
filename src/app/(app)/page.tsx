@@ -5,7 +5,6 @@ export default function Home() {
   const t = useTranslations('loginPage')
   return (
     <div className=''>
-      <p>{t('button')}</p>
       <TestCalendar />
     </div>
   )
