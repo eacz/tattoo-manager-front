@@ -1,11 +1,16 @@
-import { TestCalendar } from '@/modules/calendar'
-import { useTranslations } from 'next-intl'
+import { getAppointments } from '@/actions'
+import { CalendarHandler } from '@/modules/calendar'
+import dayjs from 'dayjs'
 
-export default function Home() {
-  const t = useTranslations('loginPage')
+export default async function Home() {
+  const { appointments } = await getAppointments({
+    endDate: dayjs().endOf('month').toDate(),
+    startDate: dayjs().startOf('month').toDate(),
+  })
+
   return (
     <div className=''>
-      <TestCalendar />
+      <CalendarHandler appointments={appointments} />
     </div>
   )
 }

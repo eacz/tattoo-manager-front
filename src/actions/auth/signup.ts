@@ -1,6 +1,6 @@
 'use server'
 
-import { tattooManagerApi } from '@/lib/axios'
+import tattooManagerApi from '@/lib/axios'
 import { AuthResponse } from '@/modules/auth/interfaces'
 
 interface Payload {

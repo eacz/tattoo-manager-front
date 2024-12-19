@@ -5,18 +5,24 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useCallback, useMemo, useState } from 'react'
 import { Calendar, dayjsLocalizer, SlotInfo, View, Views } from 'react-big-calendar'
 
-import { events } from '@/app/data/events'
 import { CalendarEvent } from '../interfaces/CalendarEvent'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
+import 'dayjs/locale/en'
+
 dayjs.locale('es')
 
 const localizer = dayjsLocalizer(dayjs)
 
-export const TestCalendar = () => {
+interface Props {
+  appointments?: CalendarEvent[]
+}
+export const CalendarHandler = ({appointments}: Props) => {
   const [date, setDate] = useState(new Date())
   const [view, setView] = useState<View>(Views.MONTH)
+  console.log(appointments);
+  
 
   const onNavigate = useCallback((newDate: Date) => setDate(newDate), [setDate])
   const onView = useCallback((newView: View) => setView(newView), [setView])
@@ -40,10 +46,13 @@ export const TestCalendar = () => {
   )
 
   const onSelectSlot = (slot: SlotInfo) => {
+    console.log('onSelectSlot');
+
     console.log(slot)
   }
 
   const onSelectEvent = (event: CalendarEvent) => {
+    console.log('onSelectEvent');
     console.log(event)
   }
 
@@ -51,7 +60,7 @@ export const TestCalendar = () => {
     <div>
       <Calendar
         localizer={localizer}
-        events={events}
+        events={appointments}
         style={{ height: 800 }}
         date={date}
         onNavigate={onNavigate}
