@@ -3,7 +3,9 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { z } from 'zod'
 import { AuthResponse } from './modules/auth/interfaces'
-import { tattooManagerApi } from './lib/axios'
+import tattooManagerApi from './lib/axios'
+import { cookies } from 'next/headers'
+
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/auth/login',
@@ -54,9 +56,9 @@ export const authConfig: NextAuthConfig = {
 
         const { data } = await tattooManagerApi.post<AuthResponse>('/auth/login', { email, password })
         const { token, user } = data
+        cookies().set('token', token)
         if (!user) return null
 
-        //TODO: fix this type issue
         return { ...user, token } as any
       },
     }),

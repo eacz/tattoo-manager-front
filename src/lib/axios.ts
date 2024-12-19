@@ -2,17 +2,31 @@
 
 import axios from 'axios'
 
-export const tattooManagerApi = axios.create({
+const tattooManagerApi = axios.create({
   baseURL: process.env.BACKEND_URL,
-  headers: { 'Cache-Control': 'no-cache' },
+  headers: { 'Cache-Control': 'no-cache', 'Content-Type': 'application/json' },
   withCredentials: true,
 })
 
-//TODO: this doesn't work, investigate how to fix it
-export const setToken = (token: string) => {
-  tattooManagerApi.defaults.headers.common['Authorization'] = `Bearer ${token}`
-}
+const isServer = typeof window === 'undefined'
 
-export const removeToken = () => {
-  delete tattooManagerApi.defaults.headers.common['Authorization']
-}
+tattooManagerApi.interceptors.request.use(async (config) => {
+  if (isServer) {
+    const { cookies } = await import('next/headers')
+    const token = cookies().get('token')?.value
+
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
+  } else {
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1')
+
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
+  }
+
+  return config
+})
+
+export default tattooManagerApi
