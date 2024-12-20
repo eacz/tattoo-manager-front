@@ -3,7 +3,8 @@
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import { useCallback, useMemo, useState } from 'react'
-import { Calendar, dayjsLocalizer, SlotInfo, View, Views } from 'react-big-calendar'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { Calendar as BCalendar, dayjsLocalizer, SlotInfo, View, Views } from 'react-big-calendar'
 
 import { CalendarEvent } from '../interfaces/CalendarEvent'
 
@@ -16,16 +17,30 @@ dayjs.locale('es')
 const localizer = dayjsLocalizer(dayjs)
 
 interface Props {
-  appointments?: CalendarEvent[]
+  appointments: CalendarEvent[]
 }
-export const CalendarHandler = ({appointments}: Props) => {
+export const Calendar = ({ appointments }: Props) => {
   const [date, setDate] = useState(new Date())
   const [view, setView] = useState<View>(Views.MONTH)
-  console.log(appointments);
+  const searchParams = useSearchParams()
+  const router = useRouter()
   
-
-  const onNavigate = useCallback((newDate: Date) => setDate(newDate), [setDate])
-  const onView = useCallback((newView: View) => setView(newView), [setView])
+  const onNavigate = useCallback(
+    (newDate: Date) => {
+      const params = new URLSearchParams(searchParams)
+      params.set('date', newDate.toISOString())
+      router.push(`?${params.toString()}`)
+      
+      setDate(newDate)
+    },
+    [setDate]
+  )
+  const onView = useCallback(
+    (newView: View) => {
+      setView(newView)
+    },
+    [setView]
+  )
 
   const { messages } = useMemo(
     () => ({
@@ -46,19 +61,18 @@ export const CalendarHandler = ({appointments}: Props) => {
   )
 
   const onSelectSlot = (slot: SlotInfo) => {
-    console.log('onSelectSlot');
-
+    console.log('onSelectSlot')
     console.log(slot)
   }
 
   const onSelectEvent = (event: CalendarEvent) => {
-    console.log('onSelectEvent');
+    console.log('onSelectEvent')
     console.log(event)
   }
 
   return (
     <div>
-      <Calendar
+      <BCalendar
         localizer={localizer}
         events={appointments}
         style={{ height: 800 }}
