@@ -5,14 +5,14 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useCallback, useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Calendar as BCalendar, dayjsLocalizer, SlotInfo, View, Views } from 'react-big-calendar'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { CalendarEvent } from '../interfaces/CalendarEvent'
 
 import dayjs from 'dayjs'
+//TODO: investigate how import locales dynamically
 import 'dayjs/locale/es'
 import 'dayjs/locale/en'
-
-dayjs.locale('es')
 
 const localizer = dayjsLocalizer(dayjs)
 
@@ -24,13 +24,16 @@ export const Calendar = ({ appointments }: Props) => {
   const [view, setView] = useState<View>(Views.MONTH)
   const searchParams = useSearchParams()
   const router = useRouter()
-  
+  const t = useTranslations('calendarPage.calendarMessages')
+  const locale = useLocale()
+  dayjs.locale(locale)
+
   const onNavigate = useCallback(
     (newDate: Date) => {
       const params = new URLSearchParams(searchParams)
       params.set('date', newDate.toISOString())
       router.push(`?${params.toString()}`)
-      
+
       setDate(newDate)
     },
     [setDate]
@@ -45,16 +48,15 @@ export const Calendar = ({ appointments }: Props) => {
   const { messages } = useMemo(
     () => ({
       messages: {
-        week: 'Semana',
-        work_week: 'Semana de trabajo',
-        day: 'Día',
-        month: 'Mes',
-        previous: 'Atrás',
-        next: 'Siguiente',
-        today: 'Hoy',
-        agenda: 'Agenda',
-
-        showMore: (total: number) => `+${total} más`,
+        week: t('week'),
+        work_week: t('work_week'),
+        day: t('day'),
+        month: t('month'),
+        previous: t('previous'),
+        next: t('next'),
+        today: t('today'),
+        agenda: t('agenda'),
+        showMore: (total: number) => t('showMore', { total }),
       },
     }),
     []
@@ -84,6 +86,7 @@ export const Calendar = ({ appointments }: Props) => {
         selectable
         onSelectEvent={onSelectEvent}
         onSelectSlot={onSelectSlot}
+        defaultView='month'
       />
     </div>
   )

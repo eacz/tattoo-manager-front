@@ -19,5 +19,18 @@
     "bottomText": "¿Ya tenés una cuenta?",
     "bottomTextLink": "Ingresar"
   },
-  "test": "Hello"
+  "calendarPage": {
+    "calendarMessages": {
+      "week": "Semana",
+      "work_week": "Semana de trabajo",
+      "day": "Día",
+      "month": "Mes",
+      "previous": "Atrás",
+      "next": "Siguiente",
+      "today": "Hoy",
+      "agenda": "Agenda",
+      "showMore": "{total} more"
+    }
+  },
+  "lang": "es"
 }
