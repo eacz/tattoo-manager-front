@@ -30,6 +30,20 @@
       "today": "Hoy",
       "agenda": "Agenda",
       "showMore": "{total} more"
+    },
+    "createAppointmentForm": {
+      "titleModal": "Agregar turno",
+      "date": "Dia",
+      "start": "Hora de inicio",
+      "end": "Hora de fin",
+      "title": "Titulo",
+      "price": "Precio",
+      "earnestMoney": "Seña",
+      "notes": "Anotaciones",
+      "button": "Crear",
+      "errors": {
+        "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
+      }
     }
   },
   "lang": "es"

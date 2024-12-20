@@ -4,6 +4,7 @@
 
 .input {
   @apply border-gray-300 border-solid border-2 p-2 rounded-md w-full;
+  
 }
 
 .button-primary {

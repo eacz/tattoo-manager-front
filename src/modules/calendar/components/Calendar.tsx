@@ -13,6 +13,7 @@ import dayjs from 'dayjs'
 //TODO: investigate how import locales dynamically
 import 'dayjs/locale/es'
 import 'dayjs/locale/en'
+import { CreateAppointment } from './CreateAppointment'
 
 const localizer = dayjsLocalizer(dayjs)
 
@@ -22,6 +23,9 @@ interface Props {
 export const Calendar = ({ appointments }: Props) => {
   const [date, setDate] = useState(new Date())
   const [view, setView] = useState<View>(Views.MONTH)
+  const [isCreateAppointmentModalOpen, setIsCreateAppointmentModalOpen] = useState(false)
+  const [startDate, setStartDate] = useState<string | undefined>()
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const t = useTranslations('calendarPage.calendarMessages')
@@ -63,8 +67,8 @@ export const Calendar = ({ appointments }: Props) => {
   )
 
   const onSelectSlot = (slot: SlotInfo) => {
-    console.log('onSelectSlot')
-    console.log(slot)
+    setStartDate(dayjs(slot.start).format('YYYY-MM-DD'))
+    setIsCreateAppointmentModalOpen(true)
   }
 
   const onSelectEvent = (event: CalendarEvent) => {
@@ -87,6 +91,11 @@ export const Calendar = ({ appointments }: Props) => {
         onSelectEvent={onSelectEvent}
         onSelectSlot={onSelectSlot}
         defaultView='month'
+      />
+      <CreateAppointment
+        isModalOpen={isCreateAppointmentModalOpen}
+        setActive={setIsCreateAppointmentModalOpen}
+        startDate={startDate}
       />
     </div>
   )

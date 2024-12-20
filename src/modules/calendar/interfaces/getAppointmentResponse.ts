@@ -1,10 +1,10 @@
 export interface getAppointmentResponse {
   ok: boolean
-  appointments: Appointment[]
+  appointments: AppointmentSimplified[]
   total: number
 }
 
-export interface Appointment {
+export interface AppointmentSimplified {
   id: number
   start: Date
   end: Date

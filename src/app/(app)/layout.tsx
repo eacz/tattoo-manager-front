@@ -8,7 +8,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     redirect('/auth/login')
   }
   return (
-    <main className='min-h-screen bg-gray-100'>
+    <main className=''>
       <div className='mt-8'>{children}</div>
     </main>
   )
