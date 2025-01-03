@@ -11,6 +11,11 @@
   @apply bg-primary text-white p-2 rounded-md w-full;
 }
 
+.button-primary:disabled,
+button-primary[disabled] {
+  @apply bg-gray-400 text-white p-2 rounded-md w-full;
+}
+
 .text-danger {
   @apply text-red-500 font-bold;
 }

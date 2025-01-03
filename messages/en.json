@@ -44,6 +44,21 @@
       "errors": {
         "dateStart": "Start time can't be later than time end"
       }
+    },
+    "AppointmentDetails": {
+      "titleModal": "Appointment details",
+      "date": "Date",
+      "start": "Start time",
+      "end": "End time",
+      "title": "Title",
+      "price": "Price",
+      "earnestMoney": "Earnest money",
+      "notes": "Notes",
+      "buttonUpdate": "Update",
+      "buttonEdit": "Edit",
+      "errors": {
+        "dateStart": "Start time can't be later than time end"
+      }
     }
   },
   "lang": "en"

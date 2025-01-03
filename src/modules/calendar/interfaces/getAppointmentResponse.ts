@@ -1,13 +1,7 @@
+import { SimpleAppointment } from "./appointment"
+
 export interface getAppointmentResponse {
   ok: boolean
-  appointments: AppointmentSimplified[]
+  appointments: SimpleAppointment[]
   total: number
-}
-
-export interface AppointmentSimplified {
-  id: number
-  start: Date
-  end: Date
-  title: string
-  status: 'pending' | 'finished' | 'cancelled'
 }

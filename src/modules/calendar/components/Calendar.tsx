@@ -14,6 +14,9 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/es'
 import 'dayjs/locale/en'
 import { CreateAppointment } from './CreateAppointment'
+import { AppointmentDetails } from './AppointmentDetail'
+import { FullAppointment } from '../interfaces/appointment'
+import { getAppointmentById } from '@/actions/appointments/get-appointments-by-id'
 
 const localizer = dayjsLocalizer(dayjs)
 
@@ -24,6 +27,8 @@ export const Calendar = ({ appointments }: Props) => {
   const [date, setDate] = useState(new Date())
   const [view, setView] = useState<View>(Views.MONTH)
   const [isCreateAppointmentModalOpen, setIsCreateAppointmentModalOpen] = useState(false)
+  const [isAppointmentDetailOpen, setIsAppointmentDetailOpen] = useState(false)
+  const [appointmentDetails, setAppointmentDetails] = useState<null | FullAppointment>(null)
   const [startDate, setStartDate] = useState<string | undefined>()
 
   const searchParams = useSearchParams()
@@ -71,9 +76,19 @@ export const Calendar = ({ appointments }: Props) => {
     setIsCreateAppointmentModalOpen(true)
   }
 
-  const onSelectEvent = (event: CalendarEvent) => {
+  const onSelectEvent = async (event: CalendarEvent) => {
+    const { appointment, ok } = await getAppointmentById(event.id)
+    if (ok && appointment) {
+      setAppointmentDetails(appointment)
+    }
+    setIsAppointmentDetailOpen(true)
     console.log('onSelectEvent')
     console.log(event)
+  }
+
+  const onCloseAppointmentDetails = (active: boolean) => {
+    setIsAppointmentDetailOpen(active)
+    setAppointmentDetails(null)
   }
 
   return (
@@ -97,6 +112,13 @@ export const Calendar = ({ appointments }: Props) => {
         setActive={setIsCreateAppointmentModalOpen}
         startDate={startDate}
       />
+      {appointmentDetails && (
+        <AppointmentDetails
+          isModalOpen={isAppointmentDetailOpen}
+          setActive={onCloseAppointmentDetails}
+          appointment={appointmentDetails}
+        />
+      )}
     </div>
   )
 }
