@@ -1,25 +1,28 @@
 'use client'
 
-import { Modal } from '@/modules/common'
-import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import '../../common/common.css'
-import dayjs from 'dayjs'
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { FullAppointment } from '../interfaces/appointment'
-import utc from 'dayjs/plugin/utc'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
+
+import { Modal } from '@/modules/common'
+import '../../common/common.css'
+import { FullAppointment } from '../interfaces/appointment'
+import { updateAppointment } from '@/actions'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
 interface FormInputs {
+  id: number
   title: string
   price: number
-  date?: string
-  dateStart: string
-  dateEnd: string
+  date: string
+  timeStart: string
+  timeEnd: string
   earnestMoney?: number
   notes?: string
 }
@@ -31,8 +34,6 @@ interface Props {
 }
 
 export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Props) => {
-  console.log(appointment)
-
   const router = useRouter()
   const [editable, setEditable] = useState(false)
 
@@ -43,8 +44,8 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
   } = useForm<FormInputs>({
     defaultValues: {
       ...appointment,
-      dateStart: dayjs(appointment.dateStart).format('HH:MM'),
-      dateEnd: dayjs(appointment.dateEnd).format('HH:MM'),
+      timeStart: dayjs(appointment.dateStart).format('HH:MM'),
+      timeEnd: dayjs(appointment.dateEnd).format('HH:MM'),
       date: dayjs(appointment.dateStart).format('YYYY-MM-DD').toString(),
     },
   })
@@ -54,13 +55,36 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setError('')
-    console.log(data)
+
+    try {
+      const { date, timeStart, timeEnd, ...rest } = data
+      if (timeStart > timeEnd) {
+        setError(t('errors.dateStart'))
+      }
+      const dateStart = dayjs(date)
+        .set('hours', Number(timeStart.split(':')[0]))
+        .set('minutes', Number(timeStart.split(':')[1]))
+        .toISOString()
+      const dateEnd = dayjs(date)
+        .set('hours', Number(timeEnd.split(':')[0]))
+        .set('minutes', Number(timeEnd.split(':')[1]))
+        .toISOString()
+      const payload = { dateStart, dateEnd, ...rest }
+      const { ok, message } = await updateAppointment(data.id, payload)
+      if (!ok) {
+        setError(message)
+      }
+      router.refresh()
+      setActive(false)
+    } catch (error: any) {
+      console.log(error)
+      setError(error)
+    }
   }
 
   const handleButtonClick = () => {
     if (!editable) {
       setEditable(true)
-    } else {
     }
   }
 
@@ -112,7 +136,7 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
             type='time'
             className='input'
             disabled={!editable}
-            {...register('dateStart', { required: true })}
+            {...register('timeStart', { required: true })}
           />
         </div>
         <div className='w-full'>
@@ -124,7 +148,7 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
             type='time'
             className='input'
             disabled={!editable}
-            {...register('dateEnd', { required: true })}
+            {...register('timeEnd', { required: true })}
           />
         </div>
         <div className='w-full'>
@@ -153,7 +177,11 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
         <div className='w-full '>
           <p className='text-danger mb-2'>{error}</p>
 
-          <button disabled={!isDirty && editable} type='button' onClick={handleButtonClick} className='button-primary'>
+          <button
+            disabled={!isDirty && editable}
+            type={editable ? 'submit' : 'button'}
+            onClick={handleButtonClick}
+            className='button-primary'>
             {editable ? t('buttonUpdate') : t('buttonEdit')}
           </button>
         </div>

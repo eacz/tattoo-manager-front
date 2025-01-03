@@ -8,15 +8,17 @@ import { Calendar as BCalendar, dayjsLocalizer, SlotInfo, View, Views } from 're
 import { useLocale, useTranslations } from 'next-intl'
 
 import { CalendarEvent } from '../interfaces/CalendarEvent'
+import { FullAppointment } from '../interfaces/appointment'
 
 import dayjs from 'dayjs'
 //TODO: investigate how import locales dynamically
 import 'dayjs/locale/es'
 import 'dayjs/locale/en'
+
 import { CreateAppointment } from './CreateAppointment'
 import { AppointmentDetails } from './AppointmentDetail'
-import { FullAppointment } from '../interfaces/appointment'
-import { getAppointmentById } from '@/actions/appointments/get-appointments-by-id'
+
+import { getAppointmentById } from '@/actions'
 
 const localizer = dayjsLocalizer(dayjs)
 
@@ -82,8 +84,6 @@ export const Calendar = ({ appointments }: Props) => {
       setAppointmentDetails(appointment)
     }
     setIsAppointmentDetailOpen(true)
-    console.log('onSelectEvent')
-    console.log(event)
   }
 
   const onCloseAppointmentDetails = (active: boolean) => {

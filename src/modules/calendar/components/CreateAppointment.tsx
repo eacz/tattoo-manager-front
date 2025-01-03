@@ -53,7 +53,6 @@ export const CreateAppointment = ({ isModalOpen, setActive, startDate }: Props) 
     const { ok, message } = await createAppointment(payload)
     if (!ok) {
       setError(message)
-      return
     }
     reset()
     setActive(false)

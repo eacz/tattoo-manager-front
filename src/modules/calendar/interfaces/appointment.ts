@@ -8,8 +8,8 @@ export interface SimpleAppointment {
 
 export interface FullAppointment {
   id: number
-  dateStart: Date
-  dateEnd: Date
+  dateStart: string
+  dateEnd: string
   title: string
   status: string
   price: number
