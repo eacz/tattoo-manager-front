@@ -9,4 +9,3 @@ export * from './interfaces/createAppointmentResponse'
 export * from './components/Calendar'
 export * from './components/CreateAppointment'
 export * from './components/AppointmentDetail'
-

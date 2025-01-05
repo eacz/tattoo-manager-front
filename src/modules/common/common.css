@@ -4,11 +4,20 @@
 
 .input {
   @apply border-gray-300 border-solid border-2 p-2 rounded-md w-full;
-  
 }
 
 .button-primary {
   @apply bg-primary text-white p-2 rounded-md w-full;
+}
+
+.button-delete {
+  @apply border-red-500 border-2 text-red-500 p-2 rounded-md w-full;
+  transition: all 0.3s;
+}
+
+.button-delete:hover {
+  @apply bg-red-500 border-2 text-white p-2 rounded-md w-full;
+  transition: all 0.3s;
 }
 
 .button-primary:disabled,
@@ -25,5 +34,5 @@ button-primary[disabled] {
 }
 
 .text-link {
-  @apply text-primary underline
+  @apply text-primary underline;
 }

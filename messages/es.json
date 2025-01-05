@@ -55,6 +55,10 @@
       "notes": "Anotaciones",
       "buttonUpdate": "Guardar",
       "buttonEdit": "Editar",
+      "delete": {
+        "buttonDelete": "Eliminar",
+        "title": "Esta acción no es reversible, estas seguro?"
+      },
       "errors": {
         "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
       }

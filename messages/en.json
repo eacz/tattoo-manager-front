@@ -56,6 +56,10 @@
       "notes": "Notes",
       "buttonUpdate": "Update",
       "buttonEdit": "Edit",
+      "delete": {
+        "buttonDelete": "Delete",
+        "title": "This action is not reversible, are you sure?"
+      },
       "errors": {
         "dateStart": "Start time can't be later than time end"
       }
