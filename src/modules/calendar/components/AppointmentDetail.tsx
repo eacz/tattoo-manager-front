@@ -69,7 +69,8 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
         .set('hours', Number(timeEnd.split(':')[0]))
         .set('minutes', Number(timeEnd.split(':')[1]))
         .toISOString()
-      const payload = { dateStart, dateEnd, ...rest }
+      const payload = { ...rest, dateStart, dateEnd }
+
       const { ok, message } = await updateAppointment(data.id, payload)
       if (!ok) {
         setError(message)
