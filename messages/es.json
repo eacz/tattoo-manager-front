@@ -41,6 +41,8 @@
       "earnestMoney": "Seña",
       "notes": "Anotaciones",
       "button": "Crear",
+      "schedule-available": "Basada en tu agenda regular",
+      "custom-hour": "Personalizada",
       "errors": {
         "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
       }

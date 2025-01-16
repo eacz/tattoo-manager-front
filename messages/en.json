@@ -41,6 +41,8 @@
       "earnestMoney": "Earnest money",
       "notes": "Notes",
       "button": "Add",
+      "schedule-available": "Based on your regular schedule",
+      "custom-hour": "Custom",
       "errors": {
         "dateStart": "Start time can't be later than time end"
       }

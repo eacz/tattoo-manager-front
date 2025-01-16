@@ -1,3 +1,4 @@
+import { getScheduleByUser } from '@/actions'
 import { getAppointments } from '@/actions/appointments/get-appointments'
 import { Calendar } from '@/modules/calendar'
 import dayjs from 'dayjs'
@@ -16,9 +17,11 @@ export default async function Home({ searchParams }: Props) {
     startDate: dayjs(date).startOf('month').toDate(),
   })
 
+  const schedule = await getScheduleByUser()
+
   return (
     <div className=''>
-      <Calendar appointments={appointments ?? []} />
+      <Calendar appointments={appointments ?? []} schedule={schedule.schedule} />
     </div>
   )
 }

@@ -8,6 +8,7 @@ import '../../common/common.css'
 import dayjs from 'dayjs'
 import { createAppointment } from '@/actions'
 import { useRouter } from 'next/navigation'
+import { Schedule } from '../interfaces/schedule'
 
 interface FormInputs {
   title: string
@@ -23,21 +24,32 @@ interface Props {
   isModalOpen: boolean
   setActive: (value: boolean) => void
   startDate?: string
+  schedule?: Schedule
 }
-export const CreateAppointment = ({ isModalOpen, setActive, startDate }: Props) => {
+export const CreateAppointment = ({ isModalOpen, setActive, startDate, schedule }: Props) => {
   const router = useRouter()
-  const { register, handleSubmit, setValue, reset } = useForm<FormInputs>({
+  const { register, handleSubmit, setValue, reset, getValues } = useForm<FormInputs>({
     defaultValues: { date: startDate ?? '' },
   })
-  setValue('date', startDate ?? '')
+
   const [error, setError] = useState('')
   const t = useTranslations('calendarPage.createAppointmentForm')
+
+  const updateTimeStart = (hour: string) => {
+    setValue('timeStart', hour)
+    setValue('timeEnd', `${Number(hour.split(':')[0]) + 3}:${hour.split(':')[1]}`)
+  }
+
+  setValue('date', startDate ?? '')
+  if (schedule?.schedulesHours.length) {
+    updateTimeStart(schedule.schedulesHours[0])
+  }
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setError('')
 
     const { date, timeEnd, timeStart, ...rest } = data
-    if (timeStart > timeEnd) {
+    if (timeStart >= timeEnd) {
       setError(t('errors.dateStart'))
     }
     const dateStart = dayjs(date)
@@ -94,11 +106,25 @@ export const CreateAppointment = ({ isModalOpen, setActive, startDate }: Props) 
           <label className='label' htmlFor='timeStart'>
             {t('start')}
           </label>
+          {schedule && (
+            <>
+              <p className='my-1'>{t('schedule-available')}</p>
+              <select className='select' onChange={({ target }) => updateTimeStart(target.value)}>
+                {schedule?.schedulesHours.map((schedule) => (
+                  <option value={schedule} key={schedule}>
+                    {schedule}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+          {schedule && <p className='my-1'>{t('custom-hour')}</p>}
+
           <input
             id='timeStart'
             type='time'
             className='input'
-            {...register('timeStart', { required: true })}
+            {...register('timeStart', { required: false, minLength: 1 })}
           />
         </div>
         <div className='w-full'>

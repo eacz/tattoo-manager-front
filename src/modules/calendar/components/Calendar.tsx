@@ -19,13 +19,15 @@ import { CreateAppointment } from './CreateAppointment'
 import { AppointmentDetails } from './AppointmentDetail'
 
 import { getAppointmentById } from '@/actions'
+import { Schedule } from '../interfaces/schedule'
 
 const localizer = dayjsLocalizer(dayjs)
 
 interface Props {
   appointments: CalendarEvent[]
+  schedule?: Schedule
 }
-export const Calendar = ({ appointments }: Props) => {
+export const Calendar = ({ appointments, schedule }: Props) => {
   const [date, setDate] = useState(new Date())
   const [view, setView] = useState<View>(Views.MONTH)
   const [isCreateAppointmentModalOpen, setIsCreateAppointmentModalOpen] = useState(false)
@@ -111,6 +113,7 @@ export const Calendar = ({ appointments }: Props) => {
         isModalOpen={isCreateAppointmentModalOpen}
         setActive={setIsCreateAppointmentModalOpen}
         startDate={startDate}
+        schedule={schedule}
       />
       {appointmentDetails && (
         <AppointmentDetails
