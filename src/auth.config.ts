@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { AuthResponse } from './modules/auth/interfaces'
 import tattooManagerApi from './lib/axios'
 import { cookies } from 'next/headers'
+import { renewToken } from './actions'
 
 export const authConfig: NextAuthConfig = {
   pages: {
@@ -12,7 +13,8 @@ export const authConfig: NextAuthConfig = {
     newUser: '/auth/signup',
   },
   session: {
-    maxAge: 3600,
+    maxAge: 7200,
+    updateAge: 3400 
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
@@ -29,12 +31,27 @@ export const authConfig: NextAuthConfig = {
       return true
     },
 
-    jwt({ token, user }) {
+    async jwt({ token, user }) {
       if (user) {
         token.data = user
+        return token
+      } else {
+        try {
+          console.log('renew')
+
+          const { token: newToken, user } = await renewToken()
+          if (newToken && user) {
+            token.user = user
+            return token
+          } else {
+            return null
+          }
+        } catch (error) {
+          return null
+        }
       }
-      return token
     },
+
     session({ session, token, user }) {
       session.user = token.data as any
       return session

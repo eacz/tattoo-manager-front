@@ -46,7 +46,8 @@
       "errors": {
         "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
       }
-    }, "AppointmentDetails": {
+    },
+    "AppointmentDetails": {
       "titleModal": "Detalles del turno",
       "date": "Dia",
       "start": "Hora de inicio",
@@ -65,6 +66,13 @@
         "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
       }
     }
+  },
+  "menu": {
+    "calendar": "Calendar",
+    "schedule": "Schedule",
+    "clients": "Clients",
+    "stadistics": "Stadistics",
+    "account": "Account"
   },
   "lang": "es"
 }

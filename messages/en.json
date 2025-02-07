@@ -67,5 +67,12 @@
       }
     }
   },
+  "menu": {
+    "calendar": "Calendar",
+    "schedule": "Schedule",
+    "clients": "Clients",
+    "stadistics": "Stadistics",
+    "account": "Account"
+  },
   "lang": "en"
 }

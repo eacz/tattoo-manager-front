@@ -20,8 +20,8 @@ export default async function Home({ searchParams }: Props) {
   const schedule = await getScheduleByUser()
 
   return (
-    <div className=''>
+    <>
       <Calendar appointments={appointments ?? []} schedule={schedule.schedule} />
-    </div>
+    </>
   )
 }

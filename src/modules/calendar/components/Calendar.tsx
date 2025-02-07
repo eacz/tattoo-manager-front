@@ -1,6 +1,7 @@
 'use client'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+import '../calendar.css'
 
 import { useCallback, useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -94,7 +95,7 @@ export const Calendar = ({ appointments, schedule }: Props) => {
   }
 
   return (
-    <div>
+    <>
       <BCalendar
         localizer={localizer}
         events={appointments}
@@ -104,10 +105,13 @@ export const Calendar = ({ appointments, schedule }: Props) => {
         onView={onView}
         view={view}
         messages={messages}
+        className='calendar'
         selectable
         onSelectEvent={onSelectEvent}
         onSelectSlot={onSelectSlot}
         defaultView='month'
+        //TODO: update app to make all views to work
+        views={{ month: true }}
       />
       <CreateAppointment
         isModalOpen={isCreateAppointmentModalOpen}
@@ -122,6 +126,6 @@ export const Calendar = ({ appointments, schedule }: Props) => {
           appointment={appointmentDetails}
         />
       )}
-    </div>
+    </>
   )
 }
