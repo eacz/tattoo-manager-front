@@ -10,4 +10,4 @@ export * from './components/Calendar'
 export * from './components/CreateAppointment'
 export * from './components/AppointmentDetail'
 
-export * from './interfaces/schedule'
+export * from '../schedules/interfaces/schedule'

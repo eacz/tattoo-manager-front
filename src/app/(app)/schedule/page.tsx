@@ -1,8 +1,13 @@
-export default function SchedulePage() {
+import { getScheduleByUser } from '@/actions'
+import { CreateSchedule } from '@/modules/schedules'
+
+export default async function SchedulePage() {
+  const scheduleResponse = await getScheduleByUser()
+
   return (
-    <div className='bg-slate-500 flex   md:max-w-[var(--md)] lg:max-w-[var(--lg)]'>
-      <h1>Hello Page</h1>
-      <h1>Hello Page</h1>
+    <div className='md:max-w-[var(--md)] lg:max-w-[var(--lg)]'>
+      {scheduleResponse.ok ? <p> show schedule and update</p> : <CreateSchedule />}
+      {scheduleResponse.schedule && <pre>{JSON.stringify(scheduleResponse.schedule)}</pre>}
     </div>
   )
 }

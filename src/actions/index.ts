@@ -11,3 +11,4 @@ export * from './appointments/delete-appointment'
 
 
 export * from './schedules/get-schedule-by-user'
+export * from './schedules/create-schedule'

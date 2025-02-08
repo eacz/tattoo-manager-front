@@ -14,6 +14,10 @@
   @apply bg-primary text-white p-2 rounded-md w-full;
 }
 
+.button-fit {
+  @apply w-fit;
+}
+
 .button-delete {
   @apply border-red-500 border-2 text-red-500 p-2 rounded-md w-full;
   transition: all 0.3s;
@@ -21,6 +25,11 @@
 
 .button-delete:hover {
   @apply bg-red-500 border-2 text-white p-2 rounded-md w-full;
+  transition: all 0.3s;
+}
+
+.button-disabled {
+  @apply bg-stone-300 text-stone-500  p-2 rounded-md  cursor-not-allowed;
   transition: all 0.3s;
 }
 

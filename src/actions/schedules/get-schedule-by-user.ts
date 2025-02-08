@@ -1,7 +1,7 @@
 'use server'
 
 import tattooManagerApi from '@/lib/axios'
-import { Schedule } from '@/modules/calendar'
+import { Schedule } from '@/modules/schedules'
 
 export const getScheduleByUser = async () => {
   try {

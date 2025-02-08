@@ -1,0 +1,19 @@
+.workdays {
+  @apply flex flex-wrap flex-col gap-2 my-2;
+}
+
+.workday-option {
+  @apply capitalize p-1 rounded cursor-pointer;
+}
+
+.selected {
+  @apply bg-primary;
+}
+
+.hours {
+  @apply flex flex-col gap-2 my-2 ;
+}
+
+.hour-selected {
+  @apply bg-primary text-white p-1 rounded cursor-pointer;
+}

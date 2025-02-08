@@ -1,6 +1,7 @@
 import { auth } from '@/auth.config'
 import { Menu } from '@/modules/common'
 import { redirect } from 'next/navigation'
+import '../../modules/common/common.css'
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
@@ -9,7 +10,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     redirect('/auth/login')
   }
   return (
-    <main className='flex items-center justify-center flex-col w-100'>
+    <main className='flex items-center justify-center flex-col w-100 bg-background'>
       <Menu />
       {children}
     </main>

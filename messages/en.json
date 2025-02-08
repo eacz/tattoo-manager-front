@@ -67,6 +67,30 @@
       }
     }
   },
+  "schedulePage": {
+    "createSchedule": {
+      "noScheduleText": "Looks like you don't have an agenda created, you can create a new one clicking",
+      "noScheduleTextLink": "here",
+      "createModalTitle": "Create your schedule",
+      "buttonCreate": "Create",
+      "add": "Add",
+      "workdayPickerText": "Select the days you usually work. ",
+      "multipleHourPickerText": "Select the hours where you usually schedule appointments.",
+      "errors": {
+        "noWorkdaysError": "There should be at least one workday selected.",
+        "noScheduleHoursError": "There should be at least one hour selected."
+      }
+    }
+  },
+  "days": {
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday"
+  },
   "menu": {
     "calendar": "Calendar",
     "schedule": "Schedule",

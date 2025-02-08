@@ -20,7 +20,7 @@ import { CreateAppointment } from './CreateAppointment'
 import { AppointmentDetails } from './AppointmentDetail'
 
 import { getAppointmentById } from '@/actions'
-import { Schedule } from '../interfaces/schedule'
+import { Schedule } from '../../schedules/interfaces/schedule'
 
 const localizer = dayjsLocalizer(dayjs)
 

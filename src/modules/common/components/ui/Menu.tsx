@@ -33,7 +33,7 @@ export const Menu = () => {
 
   return (
     <div
-      className='flex justify-center items-center gap-2 py-2 shadow mb-2'
+      className='flex justify-center items-center gap-2 py-2 shadow pb-2 bg-foreground'
       style={{ width: '100% !important' }}>
       {menuOptions.map((option) => (
         <MenuLink key={option.url} {...option} />

@@ -8,7 +8,7 @@ import '../../common/common.css'
 import dayjs from 'dayjs'
 import { createAppointment } from '@/actions'
 import { useRouter } from 'next/navigation'
-import { Schedule } from '../interfaces/schedule'
+import { Schedule } from '@/modules/schedules'
 
 interface FormInputs {
   title: string
