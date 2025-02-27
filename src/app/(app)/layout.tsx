@@ -10,7 +10,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     redirect('/auth/login')
   }
   return (
-    <main className='flex items-center justify-center flex-col w-100 bg-background'>
+    <main className='flex items-center flex-col w-100 bg-background h-[100vh]'>
       <Menu />
       {children}
     </main>

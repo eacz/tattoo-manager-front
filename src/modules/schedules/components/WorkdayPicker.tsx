@@ -9,11 +9,12 @@ import { useTranslations } from 'next-intl'
 
 interface Props {
   setValue: (value: workdaysType[]) => void
+  initialValue?: workdaysType[]
 }
-export const WorkDayPicker = ({ setValue }: Props) => {
+export const WorkDayPicker = ({ setValue, initialValue }: Props) => {
   const t = useTranslations()
 
-  const [selectedDays, setSelectedDays] = useState<workdaysType[]>([])
+  const [selectedDays, setSelectedDays] = useState<workdaysType[]>(initialValue ?? [])
 
   const handleChange = (value: workdaysType) => {
     if (selectedDays.includes(value)) {

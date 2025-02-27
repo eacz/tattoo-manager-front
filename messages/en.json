@@ -80,6 +80,14 @@
         "noWorkdaysError": "There should be at least one workday selected.",
         "noScheduleHoursError": "There should be at least one hour selected."
       }
+    },
+    "editSchedule": {
+      "edit": "Edit schedule",
+      "update": "Update"
+    },
+    "showSchedule": {
+      "workingDays": "Working days",
+      "workingHours": "Working hours"
     }
   },
   "days": {

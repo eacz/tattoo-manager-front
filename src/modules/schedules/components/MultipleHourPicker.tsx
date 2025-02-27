@@ -8,13 +8,14 @@ import { useTranslations } from 'next-intl'
 
 interface Props {
   setValue: (value: string[]) => void
+  initialValue?: string[]
 }
 
-export const MultipleHourPicker = ({ setValue }: Props) => {
+export const MultipleHourPicker = ({ setValue, initialValue }: Props) => {
   const t = useTranslations()
 
   const [hour, setHour] = useState('')
-  const [hours, setHours] = useState<string[]>([])
+  const [hours, setHours] = useState<string[]>(initialValue ?? [])
 
   const handleAddHour = () => {
     if (hour && !hours.includes(hour)) {

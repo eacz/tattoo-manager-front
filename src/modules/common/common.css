@@ -49,3 +49,7 @@ button-primary[disabled] {
 .text-link {
   @apply text-primary underline;
 }
+
+.card {
+  @apply bg-foreground p-2 rounded m-2;
+}

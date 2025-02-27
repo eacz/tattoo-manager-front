@@ -80,6 +80,15 @@
         "noWorkdaysError": "Tenés que seleccionar al menos un día.",
         "noScheduleHoursError": "Tenés que seleccionar al menos una hora."
       }
+    },
+    "showSchedule": {
+      "workingDays": "Días laborales",
+      "workingHours": "Horas laborales"
+    },
+    "editSchedule": {
+      "edit": "Editar agenda",
+      "update": "Actualizar"
+
     }
   },
   "days": {
