@@ -1,7 +1,7 @@
 'use server'
 
 import tattooManagerApi from '@/lib/axios'
-import { CreateAppointmentResponse, getAppointmentResponse } from '@/modules/calendar'
+import { CreateAppointmentResponse } from '@/modules/calendar'
 
 interface Payload {
   title: string
@@ -15,7 +15,6 @@ interface Payload {
 export const createAppointment = async (payload: Payload) => {
   try {
     const { data } = await tattooManagerApi.post<CreateAppointmentResponse>(`/appointment`, payload)
-    console.log(data)
 
     return {
       ok: true,

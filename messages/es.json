@@ -44,7 +44,8 @@
       "schedule-available": "Basada en tu agenda regular",
       "custom-hour": "Personalizada",
       "errors": {
-        "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
+        "dateStart": "La hora de inicio no puede ser mayor a la hora de fin",
+        "earnestMoney": "La seña no puede ser más grande que el precio"
       }
     },
     "AppointmentDetails": {
@@ -64,7 +65,8 @@
         "title": "Esta acción no es reversible, estas seguro?"
       },
       "errors": {
-        "dateStart": "La hora de inicio no puede ser mayor a la hora de fin"
+        "dateStart": "La hora de inicio no puede ser mayor a la hora de fin",
+        "earnestMoney": "La seña no puede ser más grande que el precio"
       }
     }
   },

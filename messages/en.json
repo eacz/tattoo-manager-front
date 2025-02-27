@@ -44,7 +44,8 @@
       "schedule-available": "Based on your regular schedule",
       "custom-hour": "Custom",
       "errors": {
-        "dateStart": "Start time can't be later than time end"
+        "dateStart": "Start time can't be later than time end",
+        "earnestMoney": "Earnest money value can't be greater than the price"
       }
     },
     "AppointmentDetails": {
@@ -64,7 +65,8 @@
         "title": "This action is not reversible, are you sure?"
       },
       "errors": {
-        "dateStart": "Start time can't be later than time end"
+        "dateStart": "Start time can't be later than time end",
+        "earnestMoney": "Earnest money value can't be greater than the price"
       }
     }
   },

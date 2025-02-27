@@ -47,6 +47,12 @@ export const CreateAppointment = ({ isModalOpen, setActive, startDate, schedule 
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setError('')
+    console.log(data)
+
+    if (data.earnestMoney && Number(data.earnestMoney) > Number(data.price)) {
+      setError(t('errors.earnestMoney'))
+      return
+    }
 
     const { date, timeEnd, timeStart, ...rest } = data
     if (timeStart >= timeEnd) {
