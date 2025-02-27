@@ -58,6 +58,7 @@
       "notes": "Notes",
       "buttonUpdate": "Update",
       "buttonEdit": "Edit",
+      "shouldCharge": "You should charge",
       "delete": {
         "buttonDelete": "Delete",
         "title": "This action is not reversible, are you sure?"

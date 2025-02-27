@@ -100,6 +100,17 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
     <>
       <Modal active={isModalOpen} setActive={setActive} title={t('titleModal')}>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6 items-center w-full p-4'>
+          {!editable && (
+            <div className='w-full'>
+              <p className='font-bold'>
+                {t('shouldCharge')}
+                <span className='text-green-500'>
+                  {' '}
+                  ${appointment.price - (appointment.earnestMoney ?? 0)}
+                </span>
+              </p>
+            </div>
+          )}
           <div className='w-full'>
             <label className='label' htmlFor='title'>
               {t('title')}
@@ -201,7 +212,10 @@ export const AppointmentDetails = ({ isModalOpen, setActive, appointment }: Prop
       </Modal>
       <Modal active={showConfirmDeleteModal} setActive={setShowConfirmDeleteModal} title={t('delete.title')}>
         <div className='flex justify-center items-center w-full'>
-          <button className='button-delete max-w-48 mt-4' onClick={handleDelete}> {t('delete.buttonDelete')}</button>
+          <button className='button-delete max-w-48 mt-4' onClick={handleDelete}>
+            {' '}
+            {t('delete.buttonDelete')}
+          </button>
         </div>
       </Modal>
     </>

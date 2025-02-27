@@ -58,6 +58,7 @@
       "notes": "Anotaciones",
       "buttonUpdate": "Guardar",
       "buttonEdit": "Editar",
+      "shouldCharge": "Tenés que cobrar",
       "delete": {
         "buttonDelete": "Eliminar",
         "title": "Esta acción no es reversible, estas seguro?"
@@ -88,7 +89,6 @@
     "editSchedule": {
       "edit": "Editar agenda",
       "update": "Actualizar"
-
     }
   },
   "days": {
