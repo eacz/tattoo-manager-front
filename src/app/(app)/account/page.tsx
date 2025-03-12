@@ -1,6 +1,5 @@
 import { getUserInfo } from '@/actions'
-import { ShowUserInfo } from '@/modules/account'
-import dayjs from 'dayjs'
+import { LogoutButton, ShowUserInfo } from '@/modules/account'
 import { getTranslations } from 'next-intl/server'
 
 export default async function Account() {
@@ -16,7 +15,7 @@ export default async function Account() {
       <ShowUserInfo user={user} />
       <div className='flex flex-col justify-between gap-2'>
         <button className='button-primary'>{t('buttons.config')}</button>
-        <button className='button-delete'>{t('buttons.logout')}</button>
+        <LogoutButton />
       </div>
     </div>
   )
