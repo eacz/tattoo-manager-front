@@ -93,6 +93,18 @@
       "update": "Actualizar"
     }
   },
+  "accountPage": {
+    "fields": {
+      "name": "Nombre",
+      "username": "Nombre de usuario",
+      "email": "Email",
+      "accountCreated": "Cuenta creada"
+    },
+    "buttons": {
+      "logout": "Cerrar sesión",
+      "config": "Configuración"
+    }
+  },
   "days": {
     "sunday": "Domingo",
     "monday": "Lunes",

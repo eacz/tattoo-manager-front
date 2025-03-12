@@ -23,10 +23,10 @@ export const Menu = () => {
       //  text: t('stadistics'),
       //  url: '/stadistics',
       //},
-      //{
-      //  text: t('account'),
-      //  url: '/account',
-      //},
+      {
+        text: t('account'),
+        url: '/account',
+      },
     ],
     []
   )

@@ -93,6 +93,18 @@
       "workingHours": "Working hours"
     }
   },
+  "accountPage": {
+    "fields": {
+      "name": "Name",
+      "username": "Username",
+      "email": "Email",
+      "accountCreated": "Account created at"
+    },
+    "buttons": {
+      "logout": "Logout",
+      "config": "Configuration"
+    }
+  },
   "days": {
     "sunday": "Sunday",
     "monday": "Monday",

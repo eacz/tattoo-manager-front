@@ -1,6 +1,8 @@
 export * from './auth/login'
 export * from './auth/signup'
 export * from './auth/renew-token'
+export * from './auth/get-user-info'
+
 
 export * from './appointments/get-appointments'
 export * from './appointments/get-appointment-by-id'
