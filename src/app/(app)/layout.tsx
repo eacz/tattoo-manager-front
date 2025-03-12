@@ -12,7 +12,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   return (
     <main className='flex items-center flex-col w-100 bg-background h-[100vh]'>
       <Menu />
-      {children}
+      <div className=' w-[100%] card flex justify-center'>{children}</div>
     </main>
   )
 }

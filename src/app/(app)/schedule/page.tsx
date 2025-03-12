@@ -6,7 +6,7 @@ export default async function SchedulePage() {
   const scheduleResponse = await getScheduleByUser()
 
   return (
-    <div className='md:max-w-[var(--md)] lg:max-w-[var(--lg)] w-[100%] card'>
+    <div className='md:max-w-[var(--md)] lg:max-w-[var(--lg)] flex-1'>
       {scheduleResponse.ok && scheduleResponse.schedule ? (
         <ShowSchedule schedule={scheduleResponse.schedule} />
       ) : (
