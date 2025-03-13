@@ -102,7 +102,17 @@
     },
     "buttons": {
       "logout": "Cerrar sesión",
-      "config": "Configuración"
+      "config": "Configuración",
+      "save": "Guardar"
+    },
+    "config": {
+      "modalTitle": "Configuración",
+      "selectedLanguage": "Lenguaje seleccionado",
+      "selectedTheme": "Tema seleccionado"
+    },
+    "themes": {
+      "dark": "Oscuro",
+      "light": "Claro"
     }
   },
   "days": {
@@ -121,5 +131,9 @@
     "stadistics": "Stadistics",
     "account": "Account"
   },
-  "lang": "es"
+  "lang": "es",
+  "languages": {
+    "es": "Español",
+    "en": "English"
+  }
 }

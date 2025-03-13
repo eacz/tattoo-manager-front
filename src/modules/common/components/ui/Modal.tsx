@@ -6,9 +6,10 @@ interface Props {
   active: boolean
   title?: string
   setActive: (value: boolean) => void
+  bodyClass?: string
 }
 
-export const Modal = ({ children, title, active, setActive }: Props) => {
+export const Modal = ({ children, title, active, setActive, bodyClass }: Props) => {
   const closeModal = () => setActive(false)
 
   if (!active) return <></>
@@ -28,7 +29,7 @@ export const Modal = ({ children, title, active, setActive }: Props) => {
                 <h3 className='font-bold text-xl'>{title}</h3>
                 <IoCloseOutline size={30} />
               </div>
-              <div className='flex sm:items-start'>{children}</div>
+              <div className={`flex sm:items-start ${bodyClass ?? ''}`}>{children}</div>
             </div>
           </div>
         </div>

@@ -1,20 +1,28 @@
 import { getUserInfo } from '@/actions'
-import { LogoutButton, ShowUserInfo } from '@/modules/account'
-import { getTranslations } from 'next-intl/server'
+import { Configuration, customCookies, LogoutButton, ShowUserInfo } from '@/modules/account'
+import { cookies } from 'next/headers'
 
 export default async function Account() {
-  const t = await getTranslations('accountPage')
   const { user, ok } = await getUserInfo()
+  const currentLang = cookies().get('lang')?.value || 'en'
+  const currentTheme = cookies().get('theme')?.value || 'light'
 
   if (!ok || !user) {
     return <div>error</div>
+  }
+
+  const setCookies = async (values: customCookies) => {
+    'use server'
+    cookies().set('lang', values.lang)
+    cookies().set('theme', values.theme)
+
   }
 
   return (
     <div className='md:max-w-[var(--md)] lg:max-w-[var(--lg)] flex-1 flex justify-between'>
       <ShowUserInfo user={user} />
       <div className='flex flex-col justify-between gap-2'>
-        <button className='button-primary'>{t('buttons.config')}</button>
+        <Configuration currentLang={currentLang} currentTheme={currentTheme} setCookies={setCookies} />
         <LogoutButton />
       </div>
     </div>

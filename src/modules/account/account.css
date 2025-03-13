@@ -1,0 +1,11 @@
+.option {
+  @apply border-gray-500 border-2 px-2 py-1 rounded cursor-pointer;
+}
+
+.option-selected {
+  @apply bg-primary border-primary  px-2 py-1 rounded cursor-pointer;
+}
+
+.option-selected p {
+  @apply text-white;
+}
